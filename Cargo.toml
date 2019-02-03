@@ -1,0 +1,10 @@
+[package]
+name = "tetris"
+version = "0.1.0"
+authors = ["Eustaquio122"]
+edition = "2018"
+
+[dependencies]
+piston2d-opengl_graphics = "0.57"
+piston_window = "0.85"
+rand = "0.6"
