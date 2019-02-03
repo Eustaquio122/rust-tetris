@@ -13,7 +13,7 @@ If you are curious about going through the code, I would recommend starting with
 
 # Playing Instructions
 
-Use the arrows to play (Up to rotate).  
+Use the arrows to play (Up to rotate), and spacebar to drop tetrominos.  
 When the game ends, you can restart it by pressing 'r'.
 
 # License
