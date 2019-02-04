@@ -64,7 +64,6 @@ impl App {
             },
 
             NewTetromino => {
-
                 self.board.new_tetromino();
                 self.tetros_played += 1;
 
