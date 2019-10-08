@@ -13,6 +13,7 @@ pub enum GameState {
     NewTetromino,
     Moving(Instant),
     Spacing,
+    Paused(Instant),
     GameOver,
     Restart,
 }
@@ -107,6 +108,8 @@ impl App {
                 }
             },
 
+            Paused(_) => {}
+
             GameOver => {}
         };
     }
@@ -118,7 +121,7 @@ impl App {
         };
 
         match self.state {
-            Moving(_) => match key {
+            Moving(started_moving) => match key {
                 Key::Right => { self.attempt_move(Movement::Right); },
                 Key::Left  => { self.attempt_move(Movement::Left); },
                 Key::Down  => {
@@ -132,8 +135,14 @@ impl App {
                 },
                 Key::Up    => { self.attempt_move(Movement::Rotate); },
                 Key::Space => { self.state = Spacing; },
-                 _         => {},
+                Key::P     => { self.state = Paused(started_moving); },
+                _          => {},
             },
+
+            Paused(started_moving) => match key {
+                Key::P => { self.state = Moving(started_moving); },
+                _      => {},
+            }
 
             GameOver => match key {
                 Key::R => self.state = Restart,
