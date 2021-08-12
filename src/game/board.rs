@@ -40,7 +40,7 @@ impl Board {
 
         for el in self.current_tetro.iter_mut() {
             el.cell = (self.cells[el.coords.1][el.coords.0] + el.cell)
-                .unwrap_or_else(|err| panic!(err.to_string()));
+                .unwrap_or_else(|err| panic!("{}", err.to_string()));
         }
 
         sort_tetro(&mut self.current_tetro);
@@ -55,7 +55,7 @@ impl Board {
 
         for el in future_tetro.iter_mut() {
             el.cell = (self.cells[el.coords.1][el.coords.0] + el.cell)
-                .unwrap_or_else(|err| panic!(err.to_string()));
+                .unwrap_or_else(|err| panic!("{}", err.to_string()));
         }
     }
 
@@ -131,14 +131,14 @@ impl Board {
             );
 
             el.cell = el.cell.rotate()
-                .unwrap_or_else(|err| panic!(err.to_string()));
+                .unwrap_or_else(|err| panic!("{}", err.to_string()));
         }
     }
 
     pub fn mark_tetro(&mut self) {
         for el in self.current_tetro.iter_mut() {
             let (x, y) = el.coords;
-            el.cell = (self.cells[y][x] + el.cell).unwrap_or_else(|err| panic!(err.to_string()));
+            el.cell = (self.cells[y][x] + el.cell).unwrap_or_else(|err| panic!("{}", err.to_string()));
             self.cells[y][x] = el.cell;
         };
     }

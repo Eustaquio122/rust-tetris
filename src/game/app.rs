@@ -176,8 +176,8 @@ impl App {
     fn current_speed(&self) -> u64 {
         let mut speed_factor: usize = self.tetros_played / 10;
        
-        if speed_factor > 11 {
-            speed_factor = 11;
+        if speed_factor > 8 {
+            speed_factor = 8;
         }
        
         (700 - 50 * speed_factor) as u64
@@ -195,7 +195,7 @@ impl App {
                 for y in 0..self.height_blocks {
                     let square = self.get_cell_draw_area(x as f64, y as f64);
                     let color = self.board.cells[y][x].render_color()
-                        .unwrap_or_else(|err| panic!(err.to_string()));
+                        .unwrap_or_else(|err| panic!("{}", err.to_string()));
                     Rectangle::new(color).draw(square, &DrawState::default(), ctx.transform, gl);
                 }
             }
@@ -204,7 +204,7 @@ impl App {
             for el in self.board.current_tetro.iter() {
                 let square = self.get_cell_draw_area(el.coords.0 as f64, el.coords.1 as f64);
                 let color = el.cell.render_color()
-                        .unwrap_or_else(|err| panic!(err.to_string()));
+                        .unwrap_or_else(|err| panic!("{}", err.to_string()));
                 Rectangle::new(color).draw(square, &DrawState::default(), ctx.transform, gl);
             }
 

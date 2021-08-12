@@ -5,6 +5,6 @@ authors = ["Eustaquio122"]
 edition = "2018"
 
 [dependencies]
-piston2d-opengl_graphics = "0.57"
-piston_window = "0.85"
-rand = "0.6"
+piston2d-opengl_graphics = "0.78"
+piston_window = "0.120.0"
+rand = "0.8.4"

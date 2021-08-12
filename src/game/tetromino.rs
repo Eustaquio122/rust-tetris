@@ -28,7 +28,7 @@ enum Tetros {
 
 impl Distribution<Tetros> for Standard {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Tetros {
-        match rng.gen_range(0,7) {
+        match rng.gen_range(0..7) {
             0 => I,
             1 => O,
             2 => T,
