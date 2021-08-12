@@ -176,8 +176,8 @@ impl App {
     fn current_speed(&self) -> u64 {
         let mut speed_factor: usize = self.tetros_played / 10;
        
-        if speed_factor > 8 {
-            speed_factor = 8;
+        if speed_factor > 11 {
+            speed_factor = 11;
         }
        
         (700 - 50 * speed_factor) as u64
